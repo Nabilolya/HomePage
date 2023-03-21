@@ -36,15 +36,15 @@ async function sendMail(callback) {
     secure: true, // true for 465, false for other ports
     auth: {
       user: "nabilbouhassounolya@gmail.com",
-      pass: "kpuvccamtvrjsujh"
+      pass: "fbkfkgfzzzvyuxkr"
     }
   });
 
   let mailOptions = {
     from: 'nabilbouhassounolya@gmail.com', // sender address
-    to: "samahbouhassoune@gmail.com", // list of receivers
-    subject: "Wellcome to Fun Of Heuristic 👻", // Subject line
-    html: `<h1>Hi</h1><br>
+    to: "nabilbouhassounolya@gmail.com", // list of receivers
+    subject: "Welcome,MIT Consulting!", // Subject line
+    html: `<h1>Hello, We hope you are doing very well, thanks for your message </br> A member from MIT Consulting will contact you soon.</h1><br>
     <h4>Thanks for joining us</h4>`
   };
 
