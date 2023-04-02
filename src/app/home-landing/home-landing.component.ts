@@ -20,7 +20,8 @@ export class HomeLandingComponent {
   }
   message: string = '';
   name: string = '';
-  email:string = '';
+  email: string = '';
+
 
   Email: string = "Tap your Email please...";
   Content: string = "Send us what you really want to say...";
@@ -28,9 +29,16 @@ export class HomeLandingComponent {
     this.data.emailReciever = this.email;
     this.data.name = this.name;
     this.data.message = this.message;
-    this.apicall.sendMail(this.data).subscribe((result) => {
-      console.log(result);
-    })
+    if (this.data.message) {
+      this.apicall.sendMail(this.data).subscribe((result) => {
+        console.log(result);
+      })
+    } else {
+      let box = document.getElementById('snackbar');
+      box?.classList.add('show');
+      setTimeout(function(){  box?.classList.remove('show'); }, 3000);
+    }
+  
   }
 
   EmptyEmail() {
