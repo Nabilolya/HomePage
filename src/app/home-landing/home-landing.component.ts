@@ -21,10 +21,17 @@ export class HomeLandingComponent {
   message: string = '';
   name: string = '';
   email: string = '';
+  messageCustomer: String = '';
 
 
   Email: string = "Tap your Email please...";
   Content: string = "Send us what you really want to say...";
+  showToast() {
+    let box = document.getElementById('snackbar');
+    box?.classList.add('show');
+    setTimeout(function(){  box?.classList.remove('show'); }, 3000);
+  }
+  
   sendToMail() {
     this.data.emailSender = this.email;
     this.data.name = this.name;
@@ -32,11 +39,12 @@ export class HomeLandingComponent {
     if (this.data.message) {
       this.apicall.sendMail(this.data).subscribe((result) => {
         console.log(result);
+        this.messageCustomer = "Ihre Nachricht wird gesendet, danke";
+        this.showToast();
       })
     } else {
-      let box = document.getElementById('snackbar');
-      box?.classList.add('show');
-      setTimeout(function(){  box?.classList.remove('show'); }, 3000);
+      this.messageCustomer = "Bitte geben Sie alle Wasserfälle ein ..";
+      this.showToast();
     }
   
   }
