@@ -26,7 +26,7 @@ export class HomeLandingComponent {
   Email: string = "Tap your Email please...";
   Content: string = "Send us what you really want to say...";
   sendToMail() {
-    this.data.emailReciever = this.email;
+    this.data.emailSender = this.email;
     this.data.name = this.name;
     this.data.message = this.message;
     if (this.data.message) {
