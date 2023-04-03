@@ -110,11 +110,34 @@
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('#navbar').classList.toggle('navbar-mobile')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
+
+  // commented by grini ---------
+  // on('click', '.mobile-nav-toggle', function(e) {
+  //   select('#navbar').classList.toggle('navbar-mobile')
+  //   this.classList.toggle('bi-list')
+  //   this.classList.toggle('bi-x')
+  // })
+
+  /**
+   * added by grini 
+   * I don't know how to solve this in angular 
+   * he was select an element that not exist yet on DOM that return null
+   * I use setTimeout hack to solve this for now you can search on better solution later you know angular wich I don't 
+   */
+
+
+  setTimeout(() => {
+    const burger = document.querySelector(".mobile-nav-toggle")
+    burger.addEventListener("click", () => {
+    
+      document.querySelector("#navbar").classList.toggle('navbar-mobile')
+      burger.classList.toggle("bi-list")
+      burger.classList.toggle("bi-x")
+    })
+  }, 0)
+
+  // ---- grini done here ... 
+
 
   /**
    * Mobile nav dropdowns activate
