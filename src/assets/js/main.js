@@ -131,6 +131,9 @@
     burger.addEventListener("click", () => {
     
       document.querySelector("#navbar").classList.toggle('navbar-mobile')
+
+    
+
       burger.classList.toggle("bi-list")
       burger.classList.toggle("bi-x")
     })
@@ -142,30 +145,36 @@
   /**
    * Mobile nav dropdowns activate
    */
-  on('click', '.navbar .dropdown > a', function(e) {
-    if (select('#navbar').classList.contains('navbar-mobile')) {
-      e.preventDefault()
-      this.nextElementSibling.classList.toggle('dropdown-active')
-    }
-  }, true)
+
+    document.addEventListener('click', function(e) {
+      e = e || window.event;
+      var target = e.target || e.srcElement,
+      text = target.textContent || target.innerText;     
+      if (document.getElementById('navbar')?.classList.contains('navbar-mobile')) {
+        
+      if (text === 'Leistungen' || text ==='Team' || text==='Partnerschaften' || text==='Referenzen' || text==='Karriere'|| text==='Datenschutz') {
+        let sto= '#' + text;
+        document.getElementById(sto)?.scrollIntoView();
+        const br = document.querySelector(".mobile-nav-toggle")
+        document.querySelector("#navbar").classList.toggle('navbar-mobile')
+        br.classList.toggle("bi-list")
+        br.classList.toggle("bi-x")
+    
+        }
+        
+      }
+   
+  }, false);
+
 
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
-
-      let navbar = select('#navbar')
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-      scrollto(this.hash)
-    }
-  }, true)
+   setTimeout(() => {
+     on('click', '.scrollto', function (e) {
+    
+     }, true);
+    }, 0)
 
   /**
    * Scroll with ofset on page load with hash links in the url
